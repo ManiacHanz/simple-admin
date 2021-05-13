@@ -1,0 +1,126 @@
+interface Node {
+  id: ID!
+}
+
+type User  {
+    name: String,
+    userId: String @unique,
+    # 部门
+    departmentId: Int @toMany(key: "id"),
+    deptName: String,
+    # 职位
+    title: String,
+    active: Boolean,
+    position: String,
+    # 加班时间 = 总共调休
+    overtime: Int @default(value: 0),
+    # 年假
+    annual: Int @default(value: 5),
+    # 已使用的加班时间
+    used_overtime: Int @default(value: 0),
+    # 已使用的年假
+    used_annual: Int @default(value: 0),
+    # 剩余的
+    left_overtime: Int @default(value: 0),
+    left_annual: Int @default(value: 0),
+    enrollDate: String,
+    # 记录每次同步打卡记录的时间
+    updateTime: Int,
+    # 记录用户信息过期时间
+    expirationTime: Int,
+}
+
+
+type Log  {
+    # 操作内容
+    content: String,
+    # 类型 - dayoff 调休,  annual 年假
+    type: String,
+    # 操作 - add 增加, use 减少
+    handle: String,
+    operator: String,
+    target: String,
+    time: Int,
+    created_at: Date,
+    date: String,
+    month: String
+}
+
+# 部门
+type Department {
+    id: Int @unique,
+    name: String,
+    count: Int,
+    parentId: Int,
+}
+
+# 部分是否开启
+type DepartmentStatus {
+    depId: Int @unique,
+    active: Int @default(value: 0),
+}
+
+# 同步记录
+type Synclog {
+    _id: Object,
+    minutes: Int,
+    # 打卡时间及所属月份
+    hour: String,
+    # 打卡日期
+    checkin_date: String,
+    # 部门id
+    department: Int,
+}
+
+# 加班申请
+type Request {
+    userId: String,
+    date: String,
+    month: String,
+    startTime: String,
+    endTime: String,
+    week: Int,
+    status: Int,
+    checkinTime: [Int],
+}
+
+type File {
+    author: String,
+    url: String,
+    created: Int,
+    userId: String,
+    bucket: Int,
+    remark: String,
+    project: String,
+}
+
+# 可视化后台
+type Visualization {
+    # 项目名称
+    projectName: String,
+    # 项目标识
+    projectKey: String,
+    # json名称
+    name: String,
+    # json串内容
+    content: String,
+    # 创建时间
+    creatTime: String,
+    # 更新时间
+    updateTime: String,
+    # 用户id
+    userId: String,
+    # 用户id
+    userName: String,
+    # 状态 1使用中 0未使用
+    status: Int,
+    # 备注
+    desc: String,
+}
+
+# 特殊日期记录
+type SpecialDate {
+    _id: String,
+    isSpecial: Int    # 0是节假日休息， 1 是属于特殊补班日期
+}
+

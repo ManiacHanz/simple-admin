@@ -1,0 +1,41 @@
+{
+  "version": "0.0.1",
+  "name": "dayoff-server",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test1": "egg-bin test",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "sh scripts/start.sh",
+    "serve": "egg-scripts start --title=egg-server-dayoff-node",
+    "debug": "egg-bin debug --inspect-brk",
+    "build:image": "sh build.sh",
+    "dev": "APOLLO_URL=http://172.16.4.7:8080 npm start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@doctorwork/eggjs-mongo": "^1.2.5",
+    "crypto-js": "^4.0.0",
+    "egg": "^2.23.0",
+    "egg-mongoose": "^3.2.0",
+    "egg-redis": "^2.4.0",
+    "egg-router-plus": "^1.3.1",
+    "egg-scripts": "^2.12.0",
+    "graphql": "^14.4.2",
+    "graphql-tools": "^4.0.6",
+    "module-alias": "^2.2.2",
+    "moment": "^2.24.0",
+    "pipe-config-env": "0.0.6",
+    "qcloud-cos-sts": "^3.0.2",
+    "query-string": "^6.12.1"
+  },
+  "egg": {
+    "framework": "@doctorwork/eggjs-mongo"
+  },
+  "devDependencies": {
+    "egg-bin": "^4.13.0",
+    "egg-mock": "^4.0.1"
+  }
+}

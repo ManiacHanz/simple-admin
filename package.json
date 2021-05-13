@@ -1,0 +1,28 @@
+{
+  "version": "0.0.1",
+  "name": "admin-server",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "egg-bin dev --port=7002",
+    "debug": "egg-bin debug --port=7002"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "china-region": "^1.3.0",
+    "egg": "^2.23.0",
+    "egg-mongoose": "^3.2.0",
+    "egg-router-plus": "^1.3.1",
+    "egg-scripts": "^2.12.0",
+    "graphql": "^14.4.2",
+    "graphql-tools": "^4.0.6",
+    "module-alias": "^2.2.2",
+    "pipe-config-env": "0.0.6",
+    "query-string": "^6.12.1"
+  },
+  "devDependencies": {
+    "egg-bin": "^4.13.0"
+  }
+}
